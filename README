@@ -19,7 +19,7 @@ Attention)
 1. Install
 
 1)
- # clone this repo within your add-modules folder in your opensim tree
+ # clone this repo within your addon-modules folder in your opensim tree
  # execute runprebuild in your opensim tree
  # copy the following files manually from OpenSim.Grid.MoneyServer/ to your
    opensim bin/ folder, this copying doesn't work automatically currently:
