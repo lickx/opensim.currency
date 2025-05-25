@@ -18,29 +18,26 @@ Attention)
 
 1. Install
 
-1) Compile Opensim or Prepare compiled binary Opensim
+1)
+ # clone this repo within your add-modules folder in your opensim tree
+ # execute runprebuild in your opensim tree
+ # copy the following files manually from OpenSim.Grid.MoneyServer/ to your
+   opensim bin/ folder, this copying doesn't work automatically currently:
 
-2) When you use mono
- # cd opensim
- # svn co http://www.nsl.tuis.ac.jp/svn/opensim/opensim.currency/trunk opensim.currency
- # cd opensim.currensy
- # ./build.sh
+   - MoneyServer.exe.config
+   - MoneyServer.ini.example
+   - server_cert.p12
+   - SineWaveCert.pfx
+  
 
-3) When you use dotnet
- # cd opensim
- # svn co http://www.nsl.tuis.ac.jp/svn/opensim/opensim.currency/trunk opensim.currency
- # cd opensim.currensy
- # ./build.net.sh
-
-
-2. Setting
+2. Setting Up
 
 2-1. Money Server
 
  # cd opensim-0.9.x-source
  # vi bin/MoneyServer.ini 
 
-  - Plese set hostname, database, username and password of MySQL at [MySql] section.
+  - Please set hostname, database, username and password of MySQL at [MySql] section.
   - If you use Banker Avatar, please set UUID of Banker Avatar to "BankerAvatar" in MoneyServer.ini.
     Banker Avatar can buy money from system with no cost.
 	When 00000000-0000-0000-0000-000000000000 is specified as UUID, all avatars can get money from system.
@@ -81,23 +78,16 @@ Attention)
 
 2-3. Helper Script
 
-  - If you do not use XoopenSim or Modlos (Web Interface), you should setup helper scripts by manual.
-  - Please copy Scripts/* to any Web contents directory, and execute setup_sripts.sh shell script.
-    And next, edit include/config.php to rewrite ENV_HELPER_URL, ENV_HELPER_PATH, DB information, and etc.etc.
-  - Please see also: http://www.nsl.tuis.ac.jp/xoops/modules/xpwiki/?OpenSim%2FMoneyServer%2FHelper%20Script
-
- ex.)
-  # mkdir /var/www/currency
-  # cp -Rpd Scripts/* /var/www/currency
-  # cd /var/www/currency
-  # ./setup_sripts.sh
-  # chown -R www-data.www-data .
-  # vi include/config.php
+  - This needs helper scripts to be run on your webserver. See here for examples:
+    https://github.com/magicoli/opensim-helpers
 
   - Please execute viewer with "-helperuri [ENV_HELPER_URL/]" option. 
     Here, ENV_HELPER_URL is helper directory url in include/config.php.
-  - ex.) -helperuri http://localhost/currency/helper/   need last '/'
-
+  - ex.) -helperuri http://example.com/helper/economy/   needs '/' trailing slash
+  - Alternatively (recommended), in your robust.ini, under [GridInfoService]:
+    economy = "http://example.com/helper/economy/"
+    Next time, someone adds your grid to their viewer grid list, the helper uri
+    will be already automatically set up.
 
 5. License.
 
