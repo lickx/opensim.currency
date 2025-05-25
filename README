@@ -12,15 +12,13 @@
  But, Web Monitor function (ASP.NET) is removed from original DTL Currency. So, this version is less secure than original 
  version!! Please use this at Your Own Risk!!
 
-Attention) 
-  Client(SIM) certification causes an error in mono-5.16 and above.
-
 
 1. Install
 
 1)
  # clone this repo within your addon-modules folder in your opensim tree
  # execute runprebuild in your opensim tree
+ # execute compile in your opensim tree
  # copy the following files manually from OpenSim.Grid.MoneyServer/ to your
    opensim bin/ folder, this copying doesn't work automatically currently:
 
@@ -71,7 +69,7 @@ Attention)
 
  Attention) 
   - Module name was changed from DTLMoneyModule to DTLNSLMoneyModule
-  - Not use 127.0.0.1 or localhost for UserServer's address and CurrencyServer's address. 
+  - Don't use 127.0.0.1 or localhost for UserServer's address and CurrencyServer's address. 
     This address is used for identification of user on Money Server.
   - Please see also: http://www.nsl.tuis.ac.jp/xoops/modules/xpwiki/?OpenSim%2FMoneyServer%2FOpenSim.ini
 
